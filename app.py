@@ -304,6 +304,31 @@ with tab5:
             st.dataframe(pd.DataFrame(predictions.by_group(rows, "scenario")),
                          hide_index=True, use_container_width=True)
 
+    # 3.5) 엣지 게이트
+    st.markdown("#### 🚦 엣지 게이트")
+    st.caption("1축(그 주체가 이 시나리오에서 가진 과거 승률·캘리브레이션) × 2축(현재 P상승 확신)을 "
+               "결합 → 표본·신뢰도가 임계값을 넘을 때만 '행동' 신호.")
+    gc = st.columns([1.3, 1.6, 1.6, 1.2])
+    g_subj = gc[0].text_input("주체", value="나", key="g_subj")
+    g_scen = gc[1].selectbox("시나리오", predictions.SCENARIOS, key="g_scen")
+    g_prob = gc[2].slider("P(상승) %", 0, 100, 65, step=5, key="g_prob")
+    g_thr = gc[3].slider("행동 임계(엣지)", 0.0, 1.0, 0.20, step=0.05, key="g_thr")
+    g = predictions.edge_gate(rows, g_subj.strip(), g_scen, g_prob, g_thr)
+    act = g["decision"].startswith("행동")
+    (st.success if act else st.warning)(f"**판정: {g['decision']}** — {g['reason']}")
+    gk = st.columns(5)
+    gk[0].metric("방향", g["direction"])
+    gk[1].metric("확신", f"{g['conviction']:.2f}", help="|P-50|/50")
+    gk[2].metric("주체 신뢰도", f"{g['reliability']:.2f}",
+                 help=f"과거 적중·캘리브레이션×표본수축 ({g['used']})")
+    gk[3].metric("엣지", f"{g['edge']:.2f}", help="확신 × 신뢰도")
+    gk[4].metric("근거 표본",
+                 f"{g['n']}건" + (f" · {g['hit']:.0f}%" if g["hit"] is not None else ""))
+    og = predictions.gate_open(rows, g_thr)
+    if og:
+        st.markdown("**미결 예측 게이트** (엣지순)")
+        st.dataframe(pd.DataFrame(og), hide_index=True, use_container_width=True)
+
     # 4) 저널 + 내보내기/복원
     if rows:
         st.markdown("#### 📒 예측 저널")

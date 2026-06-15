@@ -118,6 +118,71 @@ def calibration(rows, bins=5) -> list[dict]:
     return out
 
 
+def _stats_for(rows, subject=None, scenario=None) -> dict:
+    res = _resolved(rows)
+    grp = [r for r in res
+           if (subject is None or r.get("subject") == subject)
+           and (scenario is None or r.get("scenario") == scenario)]
+    if not grp:
+        return {"n": 0, "hit": None, "brier": None, "avg_actual": None, "avg_prob": None}
+    hit = _mean([1 if (r["prob"] >= 50) == (r["outcome"] == 1) else 0 for r in grp]) * 100
+    brier = _mean([((r["prob"] / 100) - r["outcome"]) ** 2 for r in grp])
+    return {"n": len(grp), "hit": hit, "brier": brier,
+            "avg_actual": _mean([r["outcome"] for r in grp]) * 100,
+            "avg_prob": _mean([r["prob"] for r in grp])}
+
+
+def edge_gate(rows, subject, scenario, prob, threshold=0.25, k=5, n_min=3) -> dict:
+    """1축(주체×시나리오 과거 신뢰도) × 2축(현재 확신)을 결합한 행동 게이트.
+
+    reliability = (방향스킬 + 캘리브레이션)/2 × 표본수축(n/(n+k))
+    edge        = 확신(|P-50|/50) × reliability
+    표본이 적거나 우위가 없으면 게이트는 닫힘(관망).
+    """
+    s = _stats_for(rows, subject, scenario)
+    used = "주체×시나리오"
+    if s["n"] < n_min:                      # 시나리오 표본 부족 시 주체 전체로 폴백
+        s2 = _stats_for(rows, subject, None)
+        if s2["n"] > s["n"]:
+            s, used = s2, "주체(전체)"
+    direction = "상승" if prob >= 50 else "하락"
+    conviction = abs(prob - 50) / 50
+    base = {"direction": direction, "conviction": round(conviction, 3),
+            "n": s["n"], "hit": s["hit"], "brier": s["brier"], "used": used,
+            "reliability": 0.0, "edge": 0.0}
+    if s["n"] == 0:
+        return {**base, "decision": "표본 없음 — 관망",
+                "reason": "이 주체의 채점된 예측이 없어 우위를 판단할 수 없음"}
+    skill_hit = max(0.0, min(1.0, (s["hit"] - 50) / 50))
+    calib = max(0.0, min(1.0, 1 - s["brier"] / 0.25))
+    reliability = (0.5 * skill_hit + 0.5 * calib) * (s["n"] / (s["n"] + k))
+    edge = conviction * reliability
+    base.update({"reliability": round(reliability, 3), "edge": round(edge, 3)})
+    if s["n"] < n_min:
+        decision, reason = "표본부족 — 관망", f"채점 {s['n']}건(<{n_min}) — 승률 신뢰 불가"
+    elif reliability <= 0.05:
+        decision, reason = "주체 우위 없음 — 관망", "과거 적중률·캘리브레이션이 동전 수준"
+    elif edge >= threshold:
+        decision, reason = f"행동: {direction}", f"엣지 {edge:.2f} ≥ 임계 {threshold:.2f}"
+    else:
+        decision, reason = "신호 약함 — 관망", f"엣지 {edge:.2f} < 임계 {threshold:.2f}"
+    return {**base, "decision": decision, "reason": reason}
+
+
+def gate_open(rows, threshold=0.25) -> list[dict]:
+    """미결 예측 각각에 엣지 게이트를 적용."""
+    out = []
+    for r in rows:
+        if r.get("outcome") in (0, 1):
+            continue
+        g = edge_gate(rows, r.get("subject"), r.get("scenario"), r["prob"], threshold)
+        out.append({"id": r["id"], "종목": r["asset"], "주체": r["subject"],
+                    "시나리오": r["scenario"], "P(상승)": f"{r['prob']}%",
+                    "방향": g["direction"], "신뢰도": g["reliability"],
+                    "엣지": g["edge"], "판정": g["decision"]})
+    return sorted(out, key=lambda x: -x["엣지"])
+
+
 def by_group(rows, key) -> list[dict]:
     """주체/시나리오별 승률·Brier·건수."""
     res = _resolved(rows)
