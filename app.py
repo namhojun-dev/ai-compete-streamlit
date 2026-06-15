@@ -8,8 +8,19 @@ from lib import universe as U
 
 st.set_page_config(page_title="AI Compete — 밸류에이션·13F", page_icon="📊", layout="wide")
 
-DART_KEY = st.secrets.get("DART_API_KEY", os.environ.get("DART_API_KEY", "")) if hasattr(st, "secrets") else os.environ.get("DART_API_KEY", "")
-OPENFIGI_KEY = st.secrets.get("OPENFIGI_API_KEY", os.environ.get("OPENFIGI_API_KEY", "")) if hasattr(st, "secrets") else ""
+def _secret(key: str, default: str = "") -> str:
+    """secrets.toml 이 없으면 st.secrets 접근이 예외를 던지므로 env 로 폴백."""
+    try:
+        val = st.secrets[key]
+        if val:
+            return val
+    except Exception:
+        pass
+    return os.environ.get(key, default)
+
+
+DART_KEY = _secret("DART_API_KEY")
+OPENFIGI_KEY = _secret("OPENFIGI_API_KEY")
 
 
 @st.cache_resource(show_spinner=False)
