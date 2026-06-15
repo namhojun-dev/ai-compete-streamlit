@@ -15,7 +15,7 @@ _lock = threading.Lock()
 
 SCENARIOS = ["실적 기반", "매크로/이벤트", "기술적 돌파", "밸류에이션", "수급/심리", "기타"]
 FIELDS = ["id", "date", "asset", "subject", "prob", "scenario", "logic",
-          "horizon", "entry", "note", "outcome", "result_note"]
+          "horizon", "entry", "note", "outcome", "result_note", "prior", "evidence"]
 
 
 def load() -> list[dict]:
@@ -62,6 +62,40 @@ def resolve(pred_id: int, outcome, result_note=""):
 
 def delete(pred_id: int):
     _save([r for r in load() if r["id"] != pred_id])
+
+
+def bayes_update(pred_id: int, desc: str, p_e_up: float, p_e_down: float) -> dict | None:
+    """새 증거로 사후확률 갱신. 우도비 LR=P(증거|상승)/P(증거|하락).
+    사후오즈 = 사전오즈 × LR → 사후확률. 갱신 이력을 evidence에 누적."""
+    rows = load()
+    for r in rows:
+        if r["id"] != pred_id:
+            continue
+        p_e_up = max(0.001, min(0.999, p_e_up / 100))
+        p_e_down = max(0.001, min(0.999, p_e_down / 100))
+        lr = p_e_up / p_e_down
+        before = r["prob"]
+        cur = max(0.001, min(0.999, before / 100))
+        odds = cur / (1 - cur) * lr
+        post = round(odds / (1 + odds) * 100)
+        if r.get("prior") is None:
+            r["prior"] = before          # 최초 갱신 시 원 예측을 사전확률로 보존
+        r.setdefault("evidence", [])
+        r["evidence"].append({
+            "date": date.today().isoformat(), "desc": desc.strip(),
+            "p_e_up": round(p_e_up * 100, 1), "p_e_down": round(p_e_down * 100, 1),
+            "lr": round(lr, 2), "before": before, "after": post})
+        r["prob"] = post
+        _save(rows)
+        return r
+    return None
+
+
+def evidence_history(pred_id: int) -> list[dict]:
+    for r in load():
+        if r["id"] == pred_id:
+            return r.get("evidence") or []
+    return []
 
 
 def replace_all(rows: list[dict]):

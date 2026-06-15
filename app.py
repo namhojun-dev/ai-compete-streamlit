@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import streamlit as st
 
-from lib import dart, screener, comparables, thirteenf, us_screener, predictions
+from lib import dart, screener, comparables, thirteenf, us_screener, predictions, debate
 from lib import universe as U
 
 st.set_page_config(page_title="AI Compete — 밸류에이션·13F", page_icon="📊", layout="wide")
@@ -21,6 +21,13 @@ def _secret(key: str, default: str = "") -> str:
 
 DART_KEY = _secret("DART_API_KEY")
 OPENFIGI_KEY = _secret("OPENFIGI_API_KEY")
+
+# LLM 키를 환경변수로 주입(SDK 자동 인식) — secrets/env 어느 쪽이든
+for _k in ("OPENAI_API_KEY", "GOOGLE_GENERATIVE_AI_API_KEY", "ANTHROPIC_API_KEY", "PERPLEXITY_API_KEY"):
+    _v = _secret(_k)
+    if _v:
+        os.environ[_k] = _v
+LLM_READY = all(os.environ.get(k) for k in ("OPENAI_API_KEY", "GOOGLE_GENERATIVE_AI_API_KEY", "ANTHROPIC_API_KEY"))
 
 
 @st.cache_resource(show_spinner=False)
@@ -89,8 +96,8 @@ if not DART_KEY:
     st.warning("DART_API_KEY 가 설정되지 않아 PER·EPS·ROE 등 국내 재무가 비어 보일 수 있습니다. "
                "Streamlit Cloud → Settings → Secrets 에 `DART_API_KEY` 를 추가하세요.")
 
-tab1, tab2, tab4, tab3, tab5 = st.tabs(
-    ["🔎 한국 저평가 스크리너", "🆚 유사 종목 비교", "🇺🇸 미국 저평가 스크리너",
+tab6, tab1, tab2, tab4, tab3, tab5 = st.tabs(
+    ["🧠 AI 토론", "🔎 한국 저평가 스크리너", "🆚 유사 종목 비교", "🇺🇸 미국 저평가 스크리너",
      "🏦 13F 기관 보유", "🎯 예측 트래킹·승률"])
 
 # ===== 탭 1: 스크리너 =====
@@ -329,6 +336,38 @@ with tab5:
         st.markdown("**미결 예측 게이트** (엣지순)")
         st.dataframe(pd.DataFrame(og), hide_index=True, use_container_width=True)
 
+    # 3.6) 베이지안 사후확률 업데이트
+    if rows:
+        st.markdown("#### 🔄 베이지안 사후확률 업데이트")
+        st.caption("새 증거가 들어오면 우도비 LR=P(증거|상승)/P(증거|하락)로 사전→사후 확률을 갱신합니다. "
+                   "갱신된 확률이 예측의 현재 P(상승)이 되어 게이트·캘리브레이션에 반영됩니다.")
+        bopt = {f"#{r['id']} {r['asset']} · {r['subject']} · 현재 P{r['prob']}%": r["id"] for r in rows}
+        bsel = st.selectbox("대상 예측", list(bopt.keys()), key="bsel")
+        bid = bopt[bsel]
+        bc = st.columns([2.4, 1.3, 1.3, 1])
+        edesc = bc[0].text_input("새 증거", placeholder="예: 예상 상회 실적 발표", key="edesc")
+        peu = bc[1].slider("P(증거|상승) %", 1, 99, 70, key="peu",
+                           help="상승이 맞다면 이 증거가 나올 확률")
+        ped = bc[2].slider("P(증거|하락) %", 1, 99, 30, key="ped",
+                           help="하락이 맞다면 이 증거가 나올 확률")
+        lr_prev = peu / ped
+        bc[3].metric("LR", f"{lr_prev:.2f}", help=">1 상승 지지 / <1 하락 지지")
+        if st.button("증거 반영(업데이트)", type="primary") and edesc.strip():
+            r = predictions.bayes_update(bid, edesc, peu, ped)
+            if r:
+                ev = r["evidence"][-1]
+                st.success(f"P(상승) {ev['before']}% → **{ev['after']}%** (LR {ev['lr']})")
+                st.rerun()
+        hist = predictions.evidence_history(bid)
+        if hist:
+            cur = next(r for r in rows if r["id"] == bid)
+            st.markdown(f"**갱신 이력** (사전확률 {cur.get('prior', cur['prob'])}% 에서 출발)")
+            st.dataframe(pd.DataFrame([{
+                "날짜": h["date"], "증거": h["desc"], "P(E|상승)": f"{h['p_e_up']}%",
+                "P(E|하락)": f"{h['p_e_down']}%", "LR": h["lr"],
+                "사전→사후": f"{h['before']}% → {h['after']}%"} for h in hist]),
+                hide_index=True, use_container_width=True)
+
     # 4) 저널 + 내보내기/복원
     if rows:
         st.markdown("#### 📒 예측 저널")
@@ -358,3 +397,92 @@ with tab5:
             predictions.delete(int(del_id)); st.rerun()
     st.caption("⚠ Streamlit Cloud는 재배포 시 파일이 초기화됩니다 → CSV/JSON로 주기적 백업 권장. "
                "승률은 표본이 쌓일수록 의미가 커집니다(분석 행위를 꾸준히 로깅).")
+
+# ===== 탭 6: AI 토론 =====
+POS_BADGE = {"롱": "🟢 롱", "숏": "🔴 숏", "관망": "🟡 관망"}
+
+
+def _pos_prob_consensus(pos):
+    return {"롱": 75, "숏": 25}.get(pos, 50)
+
+
+with tab6:
+    st.markdown("**GPT · Gemini · Claude** 가 3라운드 토론(독립→반박→최종)하고 **Perplexity**가 웹검색으로 종합합니다. "
+                "결과는 모델별 P(상승)으로 예측 저널에 기록해 **모델별 승률·캘리브레이션**으로 누적할 수 있습니다.")
+    if not LLM_READY:
+        st.warning("LLM 키가 없어 토론을 실행할 수 없습니다. Secrets/.env에 OPENAI_API_KEY · "
+                   "GOOGLE_GENERATIVE_AI_API_KEY · ANTHROPIC_API_KEY (선택: PERPLEXITY_API_KEY) 를 설정하세요.")
+    dc = st.columns([2, 1])
+    d_ticker = dc[0].text_input("미국 종목 티커", placeholder="예: AAPL, NVDA, TSLA", key="d_ticker")
+    run = dc[1].button("토론 시작", type="primary", disabled=not LLM_READY)
+
+    if run and d_ticker.strip():
+        tk = d_ticker.strip().upper()
+        f = us_screener.us_market.get_us_fundamentals(tk)
+        quote = {"symbol": tk, "shortName": tk, "price": f.get("price"),
+                 "marketCap": f.get("marketCap"), "changePercent": None}
+        with st.status("토론 진행 중… (모델당 3라운드, 1~3분 소요)", expanded=True) as status:
+            res = debate.run_debate(tk, quote, lambda s: status.update(label=s))
+            status.update(label="토론 완료", state="complete")
+        st.session_state["debate_result"] = res
+
+    res = st.session_state.get("debate_result")
+    if res:
+        st.divider()
+        st.subheader(f"📌 {res['ticker']} 종합 결과")
+        syn = res.get("synthesis")
+        if syn:
+            sc = st.columns([1, 1, 1, 1])
+            sc[0].metric("종합 합의", POS_BADGE.get(syn["consensus"], syn["consensus"]))
+            sc[1].metric("목표가", f"${syn['target_price']}" if syn["target_price"] else "—")
+            sc[2].metric("손절가", f"${syn['stop_loss']}" if syn["stop_loss"] else "—")
+            sc[3].metric("진입구간", syn["entry_zone"] or "—")
+            st.info(syn["summary"])
+            if syn["fresh_insights"]:
+                st.markdown("**🔎 웹검색 최신 인사이트**")
+                for x in syn["fresh_insights"]:
+                    st.markdown(f"- {x}")
+            if syn["notable_disagreements"]:
+                st.markdown("**⚔️ 모델 간 대립**")
+                for x in syn["notable_disagreements"]:
+                    st.markdown(f"- {x}")
+            if syn["warning"]:
+                st.caption("⚠ " + syn["warning"])
+            if syn["citations"]:
+                st.caption("출처: " + " · ".join(f"[{c['title']}]({c['url']})" for c in syn["citations"][:8]))
+        elif res.get("synthesis_error"):
+            st.warning("Perplexity 종합 실패: " + res["synthesis_error"])
+
+        st.markdown("#### 모델별 최종 입장")
+        fcols = st.columns(3)
+        for i, op in enumerate(res["finals"]):
+            with fcols[i % 3]:
+                st.markdown(f"**{debate.DISPLAY[op['modelId']]}**")
+                st.markdown(f"{POS_BADGE.get(op['position'], op['position'])} · 신뢰도 {op['confidence']}% · "
+                            f"강도 {op['strength']} · P(상승) {debate.position_to_prob(op)}%")
+                tp = f"${op['target_price']}" if op.get("target_price") else "—"
+                sl = f"${op['stop_loss']}" if op.get("stop_loss") else "—"
+                st.caption(f"목표 {tp} / 손절 {sl}")
+
+        with st.expander("🔬 라운드별 전체 토론 보기"):
+            for rnd in (1, 2, 3):
+                st.markdown(f"### {rnd}차 라운드")
+                for op in res["rounds"][rnd]:
+                    st.markdown(f"**{debate.DISPLAY[op['modelId']]}** — {POS_BADGE.get(op['position'], op['position'])} "
+                                f"신뢰도 {op['confidence']}% 강도 {op['strength']}")
+                    st.markdown(op["body"])
+                    if op["key_reasons"]:
+                        st.caption("근거: " + " / ".join(op["key_reasons"]))
+                    st.divider()
+
+        if st.button("🎯 예측 저널에 기록 (모델별 P상승)"):
+            for op in res["finals"]:
+                predictions.add(res["ticker"], debate.DISPLAY[op["modelId"]].split()[0],
+                                debate.position_to_prob(op), "AI 토론",
+                                logic=f"{op['position']} 신뢰도{op['confidence']}", horizon=20,
+                                note=(op["key_reasons"][:1] or [""])[0])
+            if syn:
+                predictions.add(res["ticker"], "AI종합", _pos_prob_consensus(syn["consensus"]),
+                                "AI 토론", logic=syn["consensus"], horizon=20, note=syn["summary"][:80])
+            st.success("모델별·종합 예측을 저널에 기록했습니다. '🎯 예측 트래킹' 탭에서 확인하세요.")
+    st.caption("투자 자문이 아니며, 결과는 분석 참고용입니다.")

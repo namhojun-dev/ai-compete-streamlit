@@ -3,14 +3,20 @@
 # 둘 중 하나라도 죽으면 자동 재기동. 현재 공개 URL은 /tmp/cf-url.txt 에 기록.
 cd /home/junee/workspace/ubuntu/ai-compete-streamlit || exit 1
 ENVF=/home/junee/workspace/ubuntu/ai_trading_research/.env.local
-DART=$(grep -E '^DART_API_KEY=' "$ENVF" | cut -d= -f2- | tr -d '\r\n ')
-SECUA="ai-compete research namhojun@gmail.com"
+# .env.local 의 키를 export (DART + LLM 4종)
+set -a
+for K in DART_API_KEY OPENFIGI_API_KEY OPENAI_API_KEY GOOGLE_GENERATIVE_AI_API_KEY ANTHROPIC_API_KEY PERPLEXITY_API_KEY; do
+  V=$(grep -E "^$K=" "$ENVF" | cut -d= -f2- | tr -d '\r\n ')
+  [ -n "$V" ] && export "$K=$V"
+done
+set +a
+export SEC_USER_AGENT="ai-compete research namhojun@gmail.com"
 
 start_streamlit() {
   PID=$(ss -ltnp 2>/dev/null | grep ':8501 ' | grep -oE 'pid=[0-9]+' | head -1 | cut -d= -f2)
   [ -n "$PID" ] && kill "$PID" 2>/dev/null
   sleep 1
-  DART_API_KEY="$DART" SEC_USER_AGENT="$SECUA" setsid .venv/bin/streamlit run app.py \
+  setsid .venv/bin/streamlit run app.py \
     --server.headless true --server.port 8501 --server.address 0.0.0.0 \
     > /tmp/streamlit.log 2>&1 < /dev/null &
   sleep 8
