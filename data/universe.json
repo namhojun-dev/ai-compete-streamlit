@@ -1997,5 +1997,19 @@
       "디스플레이",
       "OLED"
     ]
+  },
+  {
+    "code": "147830",
+    "ticker": "147830.KQ",
+    "name": "제룡산업",
+    "market": "KOSDAQ",
+    "sector": "Industrials",
+    "industry": "Electrical Equipment & Parts",
+    "mainProducts": [
+      "전력기자재",
+      "배전",
+      "폴리머애자",
+      "변압기"
+    ]
   }
 ]
