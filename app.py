@@ -128,7 +128,7 @@ with tab1:
         "업종": U.industry_label(c["industry"]), "현재가": won(c["price"]),
         "PER": f1(c["per"]), "EPS": won(c["eps"]), "PBR": f1(c["pbr"]),
         "ROE": pct(c["roe"]), "영업이익률": pct(c["operatingMargin"]),
-        "저평가점수": ("계산불가" if c["financials"] == "missing" else c["valuationScore"]),
+        "저평가점수": ("계산불가" if c["financials"] == "missing" else str(c["valuationScore"])),
         "의견": c["reason"],
     } for i, c in enumerate(rows)])
     st.markdown(f"**{res['label']} · {len(rows)}종목** — {sort_key}")
@@ -196,7 +196,7 @@ with tab4:
         "PER": f1(c["per"]), "EPS": usd2(c["eps"]), "PBR": f1(c["pbr"]),
         "ROE": pct(c["roe"]), "영업이익률": pct(c["operatingMargin"]),
         "시총": usd(c["marketCap"]),
-        "저평가점수": ("계산불가" if c["financials"] == "missing" else c["valuationScore"]),
+        "저평가점수": ("계산불가" if c["financials"] == "missing" else str(c["valuationScore"])),
         "의견": c["reason"],
     } for i, c in enumerate(urows)])
     st.markdown(f"**{U.sector_label(ures['sector'])} · {len(urows)}종목** — {us_sort}")
