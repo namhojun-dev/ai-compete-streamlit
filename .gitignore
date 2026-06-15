@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .streamlit/secrets.toml
 .venv/
+
+# user prediction journal (not committed)
+data/predictions.json

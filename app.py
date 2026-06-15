@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import streamlit as st
 
-from lib import dart, screener, comparables, thirteenf, us_screener
+from lib import dart, screener, comparables, thirteenf, us_screener, predictions
 from lib import universe as U
 
 st.set_page_config(page_title="AI Compete — 밸류에이션·13F", page_icon="📊", layout="wide")
@@ -89,8 +89,9 @@ if not DART_KEY:
     st.warning("DART_API_KEY 가 설정되지 않아 PER·EPS·ROE 등 국내 재무가 비어 보일 수 있습니다. "
                "Streamlit Cloud → Settings → Secrets 에 `DART_API_KEY` 를 추가하세요.")
 
-tab1, tab2, tab4, tab3 = st.tabs(
-    ["🔎 한국 저평가 스크리너", "🆚 유사 종목 비교", "🇺🇸 미국 저평가 스크리너", "🏦 13F 기관 보유"])
+tab1, tab2, tab4, tab3, tab5 = st.tabs(
+    ["🔎 한국 저평가 스크리너", "🆚 유사 종목 비교", "🇺🇸 미국 저평가 스크리너",
+     "🏦 13F 기관 보유", "🎯 예측 트래킹·승률"])
 
 # ===== 탭 1: 스크리너 =====
 with tab1:
@@ -234,3 +235,101 @@ with tab3:
             st.caption(f"출처 SEC EDGAR · 신고일 {r['filedAt']} · 미국 롱 포지션만, ~45일 지연")
         except Exception as e:
             st.error(str(e))
+
+# ===== 탭 5: 예측 트래킹·승률 =====
+with tab5:
+    st.markdown("개별 이벤트가 아니라 **분석 주체(나/모델)의 반복 예측을 누적**해 승률과 "
+                "캘리브레이션(확률이 실제로 맞는지)을 측정합니다. 베이지안 관점: 확률로 예측 → 결과로 갱신.")
+    rows = predictions.load()
+
+    # 1) 예측 추가
+    with st.expander("➕ 새 예측 기록", expanded=not rows):
+        with st.form("add_pred", clear_on_submit=True):
+            c = st.columns([2, 1.4, 1.6])
+            asset = c[0].text_input("종목/대상", placeholder="예: 삼성전자, KOSPI, 환율")
+            subject = c[1].text_input("분석 주체", value="나")
+            prob = c[2].slider("P(상승) %", 0, 100, 60, step=5)
+            c2 = st.columns([1.6, 1.4, 1])
+            scenario = c2[0].selectbox("시나리오 유형", predictions.SCENARIOS)
+            logic = c2[1].text_input("논리 단계 태그", placeholder="실적서프라이즈, 금리인하 (쉼표)")
+            horizon = c2[2].number_input("예측기간(일)", 1, 365, 20)
+            c3 = st.columns([1, 3])
+            entry = c3[0].number_input("진입가(선택)", min_value=0.0, value=0.0, step=0.01)
+            note = c3[1].text_input("근거 메모(선택)")
+            if st.form_submit_button("예측 저장", type="primary") and asset.strip():
+                predictions.add(asset, subject, prob, scenario, logic, horizon,
+                                entry or None, note)
+                st.success(f"기록됨: {asset} · P(상승)={prob}%")
+                st.rerun()
+
+    # 2) 결과 입력 (미결 예측 청산)
+    openp = [r for r in rows if r.get("outcome") not in (0, 1)]
+    if openp:
+        with st.expander(f"✅ 결과 입력 (미결 {len(openp)}건)", expanded=False):
+            opt = {f"#{r['id']} {r['asset']} · {r['subject']} · P{r['prob']}% · {r['date']}": r["id"]
+                   for r in openp}
+            sel = st.selectbox("미결 예측", list(opt.keys()))
+            rc = st.columns([1, 1, 3])
+            oc = rc[0].radio("실제 결과", ["상승", "하락"], horizontal=True)
+            rnote = rc[2].text_input("결과 메모(선택)", key="rnote")
+            if rc[1].button("결과 확정", type="primary"):
+                predictions.resolve(opt[sel], 1 if oc == "상승" else 0, rnote)
+                st.success("반영됨"); st.rerun()
+
+    # 3) 지표
+    m = predictions.metrics(rows)
+    st.markdown("#### 📊 주체 승률 · 캘리브레이션")
+    if not m.get("n"):
+        st.info(f"아직 채점된 예측이 없습니다. (미결 {m.get('open', 0)}건) — 결과를 입력하면 지표가 계산됩니다.")
+    else:
+        k = st.columns(5)
+        k[0].metric("채점 건수", m["n"])
+        k[1].metric("적중률", f"{m['hit']:.0f}%")
+        k[2].metric("Brier", f"{m['brier']:.3f}", help="낮을수록 잘 보정됨 (0=완벽, 0.25=무작위)")
+        k[3].metric("로그손실", f"{m['logloss']:.3f}", help="낮을수록 좋음")
+        k[4].metric("평균 P vs 실제", f"{m['avg_prob']:.0f}% / {m['actual_up']:.0f}%",
+                    help="평균 예측확률 대비 실제 상승률 — 가까울수록 과신/과소 적음")
+        cal = predictions.calibration(rows)
+        if cal:
+            st.markdown("**캘리브레이션** (평균예측 ≈ 실제상승률 이면 잘 보정)")
+            cdf = pd.DataFrame(cal).set_index("구간")
+            st.bar_chart(cdf[["평균예측", "실제상승률"]])
+        g1, g2 = st.columns(2)
+        with g1:
+            st.markdown("**주체별 승률**")
+            st.dataframe(pd.DataFrame(predictions.by_group(rows, "subject")),
+                         hide_index=True, use_container_width=True)
+        with g2:
+            st.markdown("**시나리오별 승률**")
+            st.dataframe(pd.DataFrame(predictions.by_group(rows, "scenario")),
+                         hide_index=True, use_container_width=True)
+
+    # 4) 저널 + 내보내기/복원
+    if rows:
+        st.markdown("#### 📒 예측 저널")
+        jdf = pd.DataFrame([{
+            "id": r["id"], "날짜": r["date"], "종목": r["asset"], "주체": r["subject"],
+            "P(상승)": f"{r['prob']}%", "시나리오": r["scenario"], "논리": r.get("logic", ""),
+            "기간": r["horizon"],
+            "결과": {1: "상승", 0: "하락"}.get(r.get("outcome"), "미정"),
+            "메모": r.get("note", ""),
+        } for r in rows])
+        st.dataframe(jdf, hide_index=True, use_container_width=True)
+        import json as _json
+        ec = st.columns([1, 1, 2])
+        ec[0].download_button("⬇ 백업(JSON)", _json.dumps(rows, ensure_ascii=False, indent=2).encode("utf-8"),
+                              "predictions.json", "application/json")
+        ec[0].download_button("⬇ 보기용 CSV", jdf.to_csv(index=False).encode("utf-8-sig"),
+                              "predictions.csv", "text/csv")
+        up = ec[1].file_uploader("⬆ 복원(JSON)", type=["json"], label_visibility="collapsed")
+        if up is not None:
+            try:
+                predictions.replace_all(_json.load(up))
+                st.success("복원됨"); st.rerun()
+            except Exception as e:
+                st.error(f"복원 실패: {e}")
+        del_id = ec[2].number_input("삭제할 id", min_value=0, value=0, step=1)
+        if ec[2].button("선택 id 삭제") and del_id:
+            predictions.delete(int(del_id)); st.rerun()
+    st.caption("⚠ Streamlit Cloud는 재배포 시 파일이 초기화됩니다 → CSV/JSON로 주기적 백업 권장. "
+               "승률은 표본이 쌓일수록 의미가 커집니다(분석 행위를 꾸준히 로깅).")
