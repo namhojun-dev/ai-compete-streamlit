@@ -1,0 +1,72 @@
+[
+ {
+  "cik": "1067983",
+  "name": "Berkshire Hathaway",
+  "label": "버크셔 해서웨이 (워런 버핏)"
+ },
+ {
+  "cik": "1336528",
+  "name": "Pershing Square",
+  "label": "퍼싱스퀘어 (빌 애크먼)"
+ },
+ {
+  "cik": "1649339",
+  "name": "Scion Asset Management",
+  "label": "Scion (마이클 버리)"
+ },
+ {
+  "cik": "1350694",
+  "name": "Bridgewater Associates",
+  "label": "브리지워터 (레이 달리오)"
+ },
+ {
+  "cik": "1037389",
+  "name": "Renaissance Technologies",
+  "label": "르네상스 테크놀로지스"
+ },
+ {
+  "cik": "1061768",
+  "name": "Baupost Group",
+  "label": "바우포스트 (세스 클라먼)"
+ },
+ {
+  "cik": "1536411",
+  "name": "Duquesne Family Office",
+  "label": "듀케인 (드러켄밀러)"
+ },
+ {
+  "cik": "1040273",
+  "name": "Third Point",
+  "label": "서드포인트 (대니얼 로브)"
+ },
+ {
+  "cik": "1166559",
+  "name": "Gates Foundation Trust",
+  "label": "게이츠 재단"
+ },
+ {
+  "cik": "1167483",
+  "name": "Tiger Global",
+  "label": "타이거 글로벌"
+ },
+ {
+  "cik": "1135730",
+  "name": "Coatue Management",
+  "label": "코튜 (Coatue)"
+ },
+ {
+  "cik": "1709323",
+  "name": "Himalaya Capital",
+  "label": "히말라야 캐피탈 (리루)"
+ },
+ {
+  "cik": "1697748",
+  "name": "ARK Investment",
+  "label": "ARK Invest (캐시 우드)"
+ },
+ {
+  "cik": "1029160",
+  "name": "Soros Fund Management",
+  "label": "소로스 펀드"
+ }
+]

@@ -1,0 +1,1740 @@
+[
+ {
+  "code": "005930",
+  "ticker": "005930.KS",
+  "name": "삼성전자",
+  "market": "KOSPI",
+  "sector": "Technology",
+  "industry": "Consumer Electronics",
+  "mainProducts": [
+   "반도체",
+   "메모리",
+   "스마트폰",
+   "가전",
+   "디스플레이"
+  ]
+ },
+ {
+  "code": "000660",
+  "ticker": "000660.KS",
+  "name": "SK하이닉스",
+  "market": "KOSPI",
+  "sector": "Technology",
+  "industry": "Semiconductors",
+  "mainProducts": [
+   "메모리",
+   "DRAM",
+   "낸드",
+   "HBM"
+  ]
+ },
+ {
+  "code": "009150",
+  "ticker": "009150.KS",
+  "name": "삼성전기",
+  "market": "KOSPI",
+  "sector": "Technology",
+  "industry": "Electronic Components",
+  "mainProducts": [
+   "MLCC",
+   "카메라모듈",
+   "기판"
+  ]
+ },
+ {
+  "code": "011070",
+  "ticker": "011070.KS",
+  "name": "LG이노텍",
+  "market": "KOSPI",
+  "sector": "Technology",
+  "industry": "Electronic Components",
+  "mainProducts": [
+   "카메라모듈",
+   "기판",
+   "전장부품"
+  ]
+ },
+ {
+  "code": "066570",
+  "ticker": "066570.KS",
+  "name": "LG전자",
+  "market": "KOSPI",
+  "sector": "Consumer Cyclical",
+  "industry": "Consumer Electronics",
+  "mainProducts": [
+   "가전",
+   "TV",
+   "전장"
+  ]
+ },
+ {
+  "code": "018260",
+  "ticker": "018260.KS",
+  "name": "삼성에스디에스",
+  "market": "KOSPI",
+  "sector": "Technology",
+  "industry": "Information Technology Services",
+  "mainProducts": [
+   "IT서비스",
+   "클라우드",
+   "물류"
+  ]
+ },
+ {
+  "code": "058470",
+  "ticker": "058470.KQ",
+  "name": "리노공업",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "mainProducts": [
+   "테스트핀",
+   "테스트소켓",
+   "반도체검사"
+  ]
+ },
+ {
+  "code": "095340",
+  "ticker": "095340.KQ",
+  "name": "ISC",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "mainProducts": [
+   "테스트소켓",
+   "반도체검사"
+  ]
+ },
+ {
+  "code": "042700",
+  "ticker": "042700.KQ",
+  "name": "한미반도체",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "mainProducts": [
+   "TC본더",
+   "반도체장비",
+   "HBM"
+  ]
+ },
+ {
+  "code": "240810",
+  "ticker": "240810.KQ",
+  "name": "원익IPS",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "mainProducts": [
+   "반도체장비",
+   "증착"
+  ]
+ },
+ {
+  "code": "036930",
+  "ticker": "036930.KQ",
+  "name": "주성엔지니어링",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "mainProducts": [
+   "반도체장비",
+   "ALD"
+  ]
+ },
+ {
+  "code": "039030",
+  "ticker": "039030.KQ",
+  "name": "이오테크닉스",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "mainProducts": [
+   "레이저장비",
+   "반도체"
+  ]
+ },
+ {
+  "code": "357780",
+  "ticker": "357780.KQ",
+  "name": "솔브레인",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "mainProducts": [
+   "반도체소재",
+   "식각액"
+  ]
+ },
+ {
+  "code": "067310",
+  "ticker": "067310.KQ",
+  "name": "하나마이크론",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductors",
+  "mainProducts": [
+   "반도체패키징",
+   "후공정"
+  ]
+ },
+ {
+  "code": "222800",
+  "ticker": "222800.KQ",
+  "name": "심텍",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Electronic Components",
+  "mainProducts": [
+   "반도체기판",
+   "PCB"
+  ]
+ },
+ {
+  "code": "213420",
+  "ticker": "213420.KQ",
+  "name": "덕산네오룩스",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Electronic Components",
+  "mainProducts": [
+   "OLED소재"
+  ]
+ },
+ {
+  "code": "098460",
+  "ticker": "098460.KQ",
+  "name": "고영",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Scientific & Technical Instruments",
+  "mainProducts": [
+   "검사장비",
+   "3D검사"
+  ]
+ },
+ {
+  "code": "140860",
+  "ticker": "140860.KQ",
+  "name": "파크시스템스",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Scientific & Technical Instruments",
+  "mainProducts": [
+   "원자현미경",
+   "계측"
+  ]
+ },
+ {
+  "code": "005380",
+  "ticker": "005380.KS",
+  "name": "현대차",
+  "market": "KOSPI",
+  "sector": "Consumer Cyclical",
+  "industry": "Auto Manufacturers",
+  "mainProducts": [
+   "자동차",
+   "전기차"
+  ]
+ },
+ {
+  "code": "000270",
+  "ticker": "000270.KS",
+  "name": "기아",
+  "market": "KOSPI",
+  "sector": "Consumer Cyclical",
+  "industry": "Auto Manufacturers",
+  "mainProducts": [
+   "자동차",
+   "전기차"
+  ]
+ },
+ {
+  "code": "012330",
+  "ticker": "012330.KS",
+  "name": "현대모비스",
+  "market": "KOSPI",
+  "sector": "Consumer Cyclical",
+  "industry": "Auto Parts",
+  "mainProducts": [
+   "자동차부품",
+   "전장",
+   "모듈"
+  ]
+ },
+ {
+  "code": "011210",
+  "ticker": "011210.KS",
+  "name": "현대위아",
+  "market": "KOSPI",
+  "sector": "Consumer Cyclical",
+  "industry": "Auto Parts",
+  "mainProducts": [
+   "자동차부품",
+   "공작기계"
+  ]
+ },
+ {
+  "code": "373220",
+  "ticker": "373220.KS",
+  "name": "LG에너지솔루션",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Electrical Equipment & Parts",
+  "mainProducts": [
+   "2차전지",
+   "배터리"
+  ]
+ },
+ {
+  "code": "006400",
+  "ticker": "006400.KS",
+  "name": "삼성SDI",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Electrical Equipment & Parts",
+  "mainProducts": [
+   "2차전지",
+   "ESS"
+  ]
+ },
+ {
+  "code": "051910",
+  "ticker": "051910.KS",
+  "name": "LG화학",
+  "market": "KOSPI",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "화학",
+   "2차전지소재",
+   "양극재"
+  ]
+ },
+ {
+  "code": "247540",
+  "ticker": "247540.KQ",
+  "name": "에코프로비엠",
+  "market": "KOSDAQ",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "양극재",
+   "2차전지소재"
+  ]
+ },
+ {
+  "code": "086520",
+  "ticker": "086520.KQ",
+  "name": "에코프로",
+  "market": "KOSDAQ",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "2차전지소재",
+   "양극재"
+  ]
+ },
+ {
+  "code": "066970",
+  "ticker": "066970.KQ",
+  "name": "엘앤에프",
+  "market": "KOSDAQ",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "양극재",
+   "2차전지소재"
+  ]
+ },
+ {
+  "code": "005490",
+  "ticker": "005490.KS",
+  "name": "POSCO홀딩스",
+  "market": "KOSPI",
+  "sector": "Basic Materials",
+  "industry": "Steel",
+  "mainProducts": [
+   "철강",
+   "2차전지소재"
+  ]
+ },
+ {
+  "code": "010130",
+  "ticker": "010130.KS",
+  "name": "고려아연",
+  "market": "KOSPI",
+  "sector": "Basic Materials",
+  "industry": "Other Industrial Metals & Mining",
+  "mainProducts": [
+   "비철금속",
+   "아연",
+   "연"
+  ]
+ },
+ {
+  "code": "011170",
+  "ticker": "011170.KS",
+  "name": "롯데케미칼",
+  "market": "KOSPI",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "석유화학",
+   "기초소재"
+  ]
+ },
+ {
+  "code": "009830",
+  "ticker": "009830.KS",
+  "name": "한화솔루션",
+  "market": "KOSPI",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "화학",
+   "태양광"
+  ]
+ },
+ {
+  "code": "010950",
+  "ticker": "010950.KS",
+  "name": "S-Oil",
+  "market": "KOSPI",
+  "sector": "Energy",
+  "industry": "Oil & Gas Refining & Marketing",
+  "mainProducts": [
+   "정유",
+   "석유화학"
+  ]
+ },
+ {
+  "code": "096770",
+  "ticker": "096770.KS",
+  "name": "SK이노베이션",
+  "market": "KOSPI",
+  "sector": "Energy",
+  "industry": "Oil & Gas Refining & Marketing",
+  "mainProducts": [
+   "정유",
+   "2차전지"
+  ]
+ },
+ {
+  "code": "035420",
+  "ticker": "035420.KS",
+  "name": "NAVER",
+  "market": "KOSPI",
+  "sector": "Communication Services",
+  "industry": "Internet Content & Information",
+  "mainProducts": [
+   "검색",
+   "커머스",
+   "핀테크",
+   "클라우드"
+  ]
+ },
+ {
+  "code": "035720",
+  "ticker": "035720.KS",
+  "name": "카카오",
+  "market": "KOSPI",
+  "sector": "Communication Services",
+  "industry": "Internet Content & Information",
+  "mainProducts": [
+   "메신저",
+   "핀테크",
+   "콘텐츠"
+  ]
+ },
+ {
+  "code": "259960",
+  "ticker": "259960.KS",
+  "name": "크래프톤",
+  "market": "KOSPI",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "mainProducts": [
+   "게임",
+   "배틀그라운드"
+  ]
+ },
+ {
+  "code": "036570",
+  "ticker": "036570.KS",
+  "name": "엔씨소프트",
+  "market": "KOSPI",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "mainProducts": [
+   "게임",
+   "MMORPG"
+  ]
+ },
+ {
+  "code": "251270",
+  "ticker": "251270.KS",
+  "name": "넷마블",
+  "market": "KOSPI",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "mainProducts": [
+   "게임",
+   "모바일게임"
+  ]
+ },
+ {
+  "code": "293490",
+  "ticker": "293490.KQ",
+  "name": "카카오게임즈",
+  "market": "KOSDAQ",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "mainProducts": [
+   "게임",
+   "퍼블리싱"
+  ]
+ },
+ {
+  "code": "263750",
+  "ticker": "263750.KQ",
+  "name": "펄어비스",
+  "market": "KOSDAQ",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "mainProducts": [
+   "게임",
+   "검은사막"
+  ]
+ },
+ {
+  "code": "112040",
+  "ticker": "112040.KQ",
+  "name": "위메이드",
+  "market": "KOSDAQ",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "mainProducts": [
+   "게임",
+   "블록체인"
+  ]
+ },
+ {
+  "code": "078340",
+  "ticker": "078340.KQ",
+  "name": "컴투스",
+  "market": "KOSDAQ",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "mainProducts": [
+   "게임",
+   "모바일게임"
+  ]
+ },
+ {
+  "code": "041510",
+  "ticker": "041510.KQ",
+  "name": "에스엠",
+  "market": "KOSDAQ",
+  "sector": "Communication Services",
+  "industry": "Entertainment",
+  "mainProducts": [
+   "엔터",
+   "음악",
+   "아티스트"
+  ]
+ },
+ {
+  "code": "035900",
+  "ticker": "035900.KQ",
+  "name": "JYP Ent.",
+  "market": "KOSDAQ",
+  "sector": "Communication Services",
+  "industry": "Entertainment",
+  "mainProducts": [
+   "엔터",
+   "음악",
+   "아티스트"
+  ]
+ },
+ {
+  "code": "122870",
+  "ticker": "122870.KQ",
+  "name": "와이지엔터테인먼트",
+  "market": "KOSDAQ",
+  "sector": "Communication Services",
+  "industry": "Entertainment",
+  "mainProducts": [
+   "엔터",
+   "음악"
+  ]
+ },
+ {
+  "code": "053800",
+  "ticker": "053800.KQ",
+  "name": "안랩",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Software—Infrastructure",
+  "mainProducts": [
+   "보안",
+   "백신",
+   "SW"
+  ]
+ },
+ {
+  "code": "017670",
+  "ticker": "017670.KS",
+  "name": "SK텔레콤",
+  "market": "KOSPI",
+  "sector": "Communication Services",
+  "industry": "Telecom Services",
+  "mainProducts": [
+   "통신",
+   "AI",
+   "5G"
+  ]
+ },
+ {
+  "code": "030200",
+  "ticker": "030200.KS",
+  "name": "KT",
+  "market": "KOSPI",
+  "sector": "Communication Services",
+  "industry": "Telecom Services",
+  "mainProducts": [
+   "통신",
+   "클라우드",
+   "5G"
+  ]
+ },
+ {
+  "code": "032640",
+  "ticker": "032640.KS",
+  "name": "LG유플러스",
+  "market": "KOSPI",
+  "sector": "Communication Services",
+  "industry": "Telecom Services",
+  "mainProducts": [
+   "통신",
+   "5G"
+  ]
+ },
+ {
+  "code": "055550",
+  "ticker": "055550.KS",
+  "name": "신한지주",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Banks—Regional",
+  "mainProducts": [
+   "은행",
+   "금융지주"
+  ]
+ },
+ {
+  "code": "105560",
+  "ticker": "105560.KS",
+  "name": "KB금융",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Banks—Regional",
+  "mainProducts": [
+   "은행",
+   "금융지주"
+  ]
+ },
+ {
+  "code": "086790",
+  "ticker": "086790.KS",
+  "name": "하나금융지주",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Banks—Regional",
+  "mainProducts": [
+   "은행",
+   "금융지주"
+  ]
+ },
+ {
+  "code": "316140",
+  "ticker": "316140.KS",
+  "name": "우리금융지주",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Banks—Regional",
+  "mainProducts": [
+   "은행",
+   "금융지주"
+  ]
+ },
+ {
+  "code": "207940",
+  "ticker": "207940.KS",
+  "name": "삼성바이오로직스",
+  "market": "KOSPI",
+  "sector": "Healthcare",
+  "industry": "Drug Manufacturers—General",
+  "mainProducts": [
+   "바이오",
+   "CDMO",
+   "위탁생산"
+  ]
+ },
+ {
+  "code": "068270",
+  "ticker": "068270.KS",
+  "name": "셀트리온",
+  "market": "KOSPI",
+  "sector": "Healthcare",
+  "industry": "Drug Manufacturers—General",
+  "mainProducts": [
+   "바이오시밀러",
+   "항체"
+  ]
+ },
+ {
+  "code": "196170",
+  "ticker": "196170.KQ",
+  "name": "알테오젠",
+  "market": "KOSDAQ",
+  "sector": "Healthcare",
+  "industry": "Biotechnology",
+  "mainProducts": [
+   "바이오",
+   "제형기술",
+   "ADC"
+  ]
+ },
+ {
+  "code": "145020",
+  "ticker": "145020.KQ",
+  "name": "휴젤",
+  "market": "KOSDAQ",
+  "sector": "Healthcare",
+  "industry": "Drug Manufacturers—Specialty & Generic",
+  "mainProducts": [
+   "보톡스",
+   "필러"
+  ]
+ },
+ {
+  "code": "028300",
+  "ticker": "028300.KQ",
+  "name": "HLB",
+  "market": "KOSDAQ",
+  "sector": "Healthcare",
+  "industry": "Biotechnology",
+  "mainProducts": [
+   "바이오",
+   "항암제"
+  ]
+ },
+ {
+  "code": "009540",
+  "ticker": "009540.KS",
+  "name": "HD한국조선해양",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Specialty Industrial Machinery",
+  "mainProducts": [
+   "조선",
+   "해양플랜트"
+  ]
+ },
+ {
+  "code": "042660",
+  "ticker": "042660.KS",
+  "name": "한화오션",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Specialty Industrial Machinery",
+  "mainProducts": [
+   "조선",
+   "방산"
+  ]
+ },
+ {
+  "code": "010140",
+  "ticker": "010140.KS",
+  "name": "삼성중공업",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Specialty Industrial Machinery",
+  "mainProducts": [
+   "조선",
+   "해양플랜트"
+  ]
+ },
+ {
+  "code": "012450",
+  "ticker": "012450.KS",
+  "name": "한화에어로스페이스",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Aerospace & Defense",
+  "mainProducts": [
+   "방산",
+   "엔진",
+   "우주"
+  ]
+ },
+ {
+  "code": "047810",
+  "ticker": "047810.KS",
+  "name": "한국항공우주",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Aerospace & Defense",
+  "mainProducts": [
+   "항공",
+   "방산"
+  ]
+ },
+ {
+  "code": "051900",
+  "ticker": "051900.KS",
+  "name": "LG생활건강",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Household & Personal Products",
+  "mainProducts": [
+   "화장품",
+   "생활용품",
+   "음료"
+  ]
+ },
+ {
+  "code": "090430",
+  "ticker": "090430.KS",
+  "name": "아모레퍼시픽",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Household & Personal Products",
+  "mainProducts": [
+   "화장품"
+  ]
+ },
+ {
+  "code": "097950",
+  "ticker": "097950.KS",
+  "name": "CJ제일제당",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Packaged Foods",
+  "mainProducts": [
+   "식품",
+   "가공식품",
+   "사료"
+  ]
+ },
+ {
+  "code": "271560",
+  "ticker": "271560.KS",
+  "name": "오리온",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Confectioners",
+  "mainProducts": [
+   "제과",
+   "스낵"
+  ]
+ },
+ {
+  "code": "139480",
+  "ticker": "139480.KS",
+  "name": "이마트",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Grocery Stores",
+  "mainProducts": [
+   "유통",
+   "대형마트"
+  ]
+ },
+ {
+  "code": "023530",
+  "ticker": "023530.KS",
+  "name": "롯데쇼핑",
+  "market": "KOSPI",
+  "sector": "Consumer Cyclical",
+  "industry": "Department Stores",
+  "mainProducts": [
+   "유통",
+   "백화점",
+   "마트"
+  ]
+ },
+ {
+  "code": "000100",
+  "ticker": "000100.KS",
+  "name": "유한양행",
+  "market": "KOSPI",
+  "sector": "Healthcare",
+  "industry": "Drug Manufacturers—General",
+  "mainProducts": [
+   "제약",
+   "신약",
+   "의약품"
+  ]
+ },
+ {
+  "code": "128940",
+  "ticker": "128940.KS",
+  "name": "한미약품",
+  "market": "KOSPI",
+  "sector": "Healthcare",
+  "industry": "Drug Manufacturers—Specialty & Generic",
+  "mainProducts": [
+   "제약",
+   "신약",
+   "의약품"
+  ]
+ },
+ {
+  "code": "069620",
+  "ticker": "069620.KS",
+  "name": "대웅제약",
+  "market": "KOSPI",
+  "sector": "Healthcare",
+  "industry": "Drug Manufacturers—Specialty & Generic",
+  "mainProducts": [
+   "제약",
+   "보툴리눔",
+   "의약품"
+  ]
+ },
+ {
+  "code": "185750",
+  "ticker": "185750.KS",
+  "name": "종근당",
+  "market": "KOSPI",
+  "sector": "Healthcare",
+  "industry": "Drug Manufacturers—Specialty & Generic",
+  "mainProducts": [
+   "제약",
+   "의약품"
+  ]
+ },
+ {
+  "code": "006280",
+  "ticker": "006280.KS",
+  "name": "녹십자",
+  "market": "KOSPI",
+  "sector": "Healthcare",
+  "industry": "Drug Manufacturers—General",
+  "mainProducts": [
+   "제약",
+   "백신",
+   "혈액제제"
+  ]
+ },
+ {
+  "code": "086900",
+  "ticker": "086900.KQ",
+  "name": "메디톡스",
+  "market": "KOSDAQ",
+  "sector": "Healthcare",
+  "industry": "Drug Manufacturers—Specialty & Generic",
+  "mainProducts": [
+   "보톡스",
+   "필러",
+   "보툴리눔"
+  ]
+ },
+ {
+  "code": "214150",
+  "ticker": "214150.KQ",
+  "name": "클래시스",
+  "market": "KOSDAQ",
+  "sector": "Healthcare",
+  "industry": "Medical Devices",
+  "mainProducts": [
+   "미용의료기기",
+   "초음파"
+  ]
+ },
+ {
+  "code": "214450",
+  "ticker": "214450.KQ",
+  "name": "파마리서치",
+  "market": "KOSDAQ",
+  "sector": "Healthcare",
+  "industry": "Drug Manufacturers—Specialty & Generic",
+  "mainProducts": [
+   "필러",
+   "리쥬란",
+   "바이오"
+  ]
+ },
+ {
+  "code": "141080",
+  "ticker": "141080.KQ",
+  "name": "리가켐바이오",
+  "market": "KOSDAQ",
+  "sector": "Healthcare",
+  "industry": "Biotechnology",
+  "mainProducts": [
+   "바이오",
+   "ADC",
+   "항암"
+  ]
+ },
+ {
+  "code": "298380",
+  "ticker": "298380.KQ",
+  "name": "에이비엘바이오",
+  "market": "KOSDAQ",
+  "sector": "Healthcare",
+  "industry": "Biotechnology",
+  "mainProducts": [
+   "바이오",
+   "이중항체",
+   "항암"
+  ]
+ },
+ {
+  "code": "192820",
+  "ticker": "192820.KS",
+  "name": "코스맥스",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Household & Personal Products",
+  "mainProducts": [
+   "화장품",
+   "ODM"
+  ]
+ },
+ {
+  "code": "161890",
+  "ticker": "161890.KS",
+  "name": "한국콜마",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Household & Personal Products",
+  "mainProducts": [
+   "화장품",
+   "ODM"
+  ]
+ },
+ {
+  "code": "002790",
+  "ticker": "002790.KS",
+  "name": "아모레퍼시픽홀딩스",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Household & Personal Products",
+  "mainProducts": [
+   "화장품",
+   "지주"
+  ]
+ },
+ {
+  "code": "237880",
+  "ticker": "237880.KQ",
+  "name": "클리오",
+  "market": "KOSDAQ",
+  "sector": "Consumer Defensive",
+  "industry": "Household & Personal Products",
+  "mainProducts": [
+   "화장품",
+   "색조"
+  ]
+ },
+ {
+  "code": "257720",
+  "ticker": "257720.KQ",
+  "name": "실리콘투",
+  "market": "KOSDAQ",
+  "sector": "Consumer Defensive",
+  "industry": "Household & Personal Products",
+  "mainProducts": [
+   "화장품",
+   "K뷰티",
+   "유통"
+  ]
+ },
+ {
+  "code": "004370",
+  "ticker": "004370.KS",
+  "name": "농심",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Packaged Foods",
+  "mainProducts": [
+   "라면",
+   "스낵",
+   "식품"
+  ]
+ },
+ {
+  "code": "007310",
+  "ticker": "007310.KS",
+  "name": "오뚜기",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Packaged Foods",
+  "mainProducts": [
+   "식품",
+   "라면",
+   "소스"
+  ]
+ },
+ {
+  "code": "003230",
+  "ticker": "003230.KS",
+  "name": "삼양식품",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Packaged Foods",
+  "mainProducts": [
+   "라면",
+   "불닭",
+   "식품"
+  ]
+ },
+ {
+  "code": "005180",
+  "ticker": "005180.KS",
+  "name": "빙그레",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Packaged Foods",
+  "mainProducts": [
+   "유제품",
+   "아이스크림",
+   "식품"
+  ]
+ },
+ {
+  "code": "005300",
+  "ticker": "005300.KS",
+  "name": "롯데칠성",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Beverages—Non-Alcoholic",
+  "mainProducts": [
+   "음료",
+   "주류"
+  ]
+ },
+ {
+  "code": "000080",
+  "ticker": "000080.KS",
+  "name": "하이트진로",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Beverages—Wineries & Distilleries",
+  "mainProducts": [
+   "주류",
+   "소주",
+   "맥주"
+  ]
+ },
+ {
+  "code": "004170",
+  "ticker": "004170.KS",
+  "name": "신세계",
+  "market": "KOSPI",
+  "sector": "Consumer Cyclical",
+  "industry": "Department Stores",
+  "mainProducts": [
+   "유통",
+   "백화점",
+   "면세"
+  ]
+ },
+ {
+  "code": "282330",
+  "ticker": "282330.KS",
+  "name": "BGF리테일",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Grocery Stores",
+  "mainProducts": [
+   "편의점",
+   "유통"
+  ]
+ },
+ {
+  "code": "007070",
+  "ticker": "007070.KS",
+  "name": "GS리테일",
+  "market": "KOSPI",
+  "sector": "Consumer Defensive",
+  "industry": "Grocery Stores",
+  "mainProducts": [
+   "편의점",
+   "유통",
+   "홈쇼핑"
+  ]
+ },
+ {
+  "code": "008770",
+  "ticker": "008770.KS",
+  "name": "호텔신라",
+  "market": "KOSPI",
+  "sector": "Consumer Cyclical",
+  "industry": "Lodging",
+  "mainProducts": [
+   "면세",
+   "호텔"
+  ]
+ },
+ {
+  "code": "018880",
+  "ticker": "018880.KS",
+  "name": "한온시스템",
+  "market": "KOSPI",
+  "sector": "Consumer Cyclical",
+  "industry": "Auto Parts",
+  "mainProducts": [
+   "자동차부품",
+   "공조",
+   "열관리"
+  ]
+ },
+ {
+  "code": "204320",
+  "ticker": "204320.KS",
+  "name": "HL만도",
+  "market": "KOSPI",
+  "sector": "Consumer Cyclical",
+  "industry": "Auto Parts",
+  "mainProducts": [
+   "자동차부품",
+   "제동",
+   "조향"
+  ]
+ },
+ {
+  "code": "005850",
+  "ticker": "005850.KS",
+  "name": "에스엘",
+  "market": "KOSPI",
+  "sector": "Consumer Cyclical",
+  "industry": "Auto Parts",
+  "mainProducts": [
+   "자동차부품",
+   "램프",
+   "전장"
+  ]
+ },
+ {
+  "code": "086280",
+  "ticker": "086280.KS",
+  "name": "현대글로비스",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Integrated Freight & Logistics",
+  "mainProducts": [
+   "물류",
+   "운송"
+  ]
+ },
+ {
+  "code": "307950",
+  "ticker": "307950.KS",
+  "name": "현대오토에버",
+  "market": "KOSPI",
+  "sector": "Technology",
+  "industry": "Software—Application",
+  "mainProducts": [
+   "SW",
+   "차량SW",
+   "IT서비스"
+  ]
+ },
+ {
+  "code": "011780",
+  "ticker": "011780.KS",
+  "name": "금호석유",
+  "market": "KOSPI",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "화학",
+   "합성고무",
+   "석유화학"
+  ]
+ },
+ {
+  "code": "120110",
+  "ticker": "120110.KS",
+  "name": "코오롱인더",
+  "market": "KOSPI",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "화학",
+   "소재",
+   "아라미드"
+  ]
+ },
+ {
+  "code": "010060",
+  "ticker": "010060.KS",
+  "name": "OCI홀딩스",
+  "market": "KOSPI",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "화학",
+   "폴리실리콘",
+   "태양광"
+  ]
+ },
+ {
+  "code": "003670",
+  "ticker": "003670.KS",
+  "name": "포스코퓨처엠",
+  "market": "KOSPI",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "양극재",
+   "음극재",
+   "2차전지소재"
+  ]
+ },
+ {
+  "code": "011790",
+  "ticker": "011790.KS",
+  "name": "SKC",
+  "market": "KOSPI",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "화학",
+   "동박",
+   "2차전지소재"
+  ]
+ },
+ {
+  "code": "278280",
+  "ticker": "278280.KQ",
+  "name": "천보",
+  "market": "KOSDAQ",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "2차전지소재",
+   "전해질"
+  ]
+ },
+ {
+  "code": "121600",
+  "ticker": "121600.KQ",
+  "name": "나노신소재",
+  "market": "KOSDAQ",
+  "sector": "Basic Materials",
+  "industry": "Specialty Chemicals",
+  "mainProducts": [
+   "2차전지소재",
+   "도전재",
+   "CNT"
+  ]
+ },
+ {
+  "code": "329180",
+  "ticker": "329180.KS",
+  "name": "HD현대중공업",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Specialty Industrial Machinery",
+  "mainProducts": [
+   "조선",
+   "엔진",
+   "해양"
+  ]
+ },
+ {
+  "code": "267260",
+  "ticker": "267260.KS",
+  "name": "HD현대일렉트릭",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Electrical Equipment & Parts",
+  "mainProducts": [
+   "전력기기",
+   "변압기"
+  ]
+ },
+ {
+  "code": "034020",
+  "ticker": "034020.KS",
+  "name": "두산에너빌리티",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Specialty Industrial Machinery",
+  "mainProducts": [
+   "발전설비",
+   "원전",
+   "가스터빈"
+  ]
+ },
+ {
+  "code": "064350",
+  "ticker": "064350.KS",
+  "name": "현대로템",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Railroads",
+  "mainProducts": [
+   "철도",
+   "방산",
+   "전차"
+  ]
+ },
+ {
+  "code": "079550",
+  "ticker": "079550.KS",
+  "name": "LIG넥스원",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Aerospace & Defense",
+  "mainProducts": [
+   "방산",
+   "미사일",
+   "유도무기"
+  ]
+ },
+ {
+  "code": "241560",
+  "ticker": "241560.KS",
+  "name": "두산밥캣",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Farm & Heavy Construction Machinery",
+  "mainProducts": [
+   "건설기계",
+   "소형장비"
+  ]
+ },
+ {
+  "code": "000720",
+  "ticker": "000720.KS",
+  "name": "현대건설",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Engineering & Construction",
+  "mainProducts": [
+   "건설",
+   "플랜트",
+   "토목"
+  ]
+ },
+ {
+  "code": "006360",
+  "ticker": "006360.KS",
+  "name": "GS건설",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Engineering & Construction",
+  "mainProducts": [
+   "건설",
+   "주택",
+   "플랜트"
+  ]
+ },
+ {
+  "code": "375500",
+  "ticker": "375500.KS",
+  "name": "DL이앤씨",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Engineering & Construction",
+  "mainProducts": [
+   "건설",
+   "주택",
+   "플랜트"
+  ]
+ },
+ {
+  "code": "294870",
+  "ticker": "294870.KS",
+  "name": "HDC현대산업개발",
+  "market": "KOSPI",
+  "sector": "Industrials",
+  "industry": "Engineering & Construction",
+  "mainProducts": [
+   "건설",
+   "주택",
+   "개발"
+  ]
+ },
+ {
+  "code": "024110",
+  "ticker": "024110.KS",
+  "name": "기업은행",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Banks—Regional",
+  "mainProducts": [
+   "은행"
+  ]
+ },
+ {
+  "code": "323410",
+  "ticker": "323410.KS",
+  "name": "카카오뱅크",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Banks—Regional",
+  "mainProducts": [
+   "인터넷은행",
+   "은행"
+  ]
+ },
+ {
+  "code": "138040",
+  "ticker": "138040.KS",
+  "name": "메리츠금융지주",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Insurance—Diversified",
+  "mainProducts": [
+   "금융지주",
+   "보험",
+   "증권"
+  ]
+ },
+ {
+  "code": "071050",
+  "ticker": "071050.KS",
+  "name": "한국금융지주",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Capital Markets",
+  "mainProducts": [
+   "증권",
+   "금융지주"
+  ]
+ },
+ {
+  "code": "006800",
+  "ticker": "006800.KS",
+  "name": "미래에셋증권",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Capital Markets",
+  "mainProducts": [
+   "증권"
+  ]
+ },
+ {
+  "code": "016360",
+  "ticker": "016360.KS",
+  "name": "삼성증권",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Capital Markets",
+  "mainProducts": [
+   "증권"
+  ]
+ },
+ {
+  "code": "039490",
+  "ticker": "039490.KS",
+  "name": "키움증권",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Capital Markets",
+  "mainProducts": [
+   "증권",
+   "리테일"
+  ]
+ },
+ {
+  "code": "032830",
+  "ticker": "032830.KS",
+  "name": "삼성생명",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Insurance—Life",
+  "mainProducts": [
+   "생명보험"
+  ]
+ },
+ {
+  "code": "000810",
+  "ticker": "000810.KS",
+  "name": "삼성화재",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Insurance—Property & Casualty",
+  "mainProducts": [
+   "손해보험"
+  ]
+ },
+ {
+  "code": "005830",
+  "ticker": "005830.KS",
+  "name": "DB손해보험",
+  "market": "KOSPI",
+  "sector": "Financial Services",
+  "industry": "Insurance—Property & Casualty",
+  "mainProducts": [
+   "손해보험"
+  ]
+ },
+ {
+  "code": "030000",
+  "ticker": "030000.KS",
+  "name": "제일기획",
+  "market": "KOSPI",
+  "sector": "Communication Services",
+  "industry": "Advertising Agencies",
+  "mainProducts": [
+   "광고",
+   "마케팅"
+  ]
+ },
+ {
+  "code": "035760",
+  "ticker": "035760.KQ",
+  "name": "CJ ENM",
+  "market": "KOSDAQ",
+  "sector": "Communication Services",
+  "industry": "Entertainment",
+  "mainProducts": [
+   "미디어",
+   "콘텐츠",
+   "커머스"
+  ]
+ },
+ {
+  "code": "253450",
+  "ticker": "253450.KQ",
+  "name": "스튜디오드래곤",
+  "market": "KOSDAQ",
+  "sector": "Communication Services",
+  "industry": "Entertainment",
+  "mainProducts": [
+   "드라마",
+   "콘텐츠",
+   "제작"
+  ]
+ },
+ {
+  "code": "352820",
+  "ticker": "352820.KS",
+  "name": "하이브",
+  "market": "KOSPI",
+  "sector": "Communication Services",
+  "industry": "Entertainment",
+  "mainProducts": [
+   "엔터",
+   "음악",
+   "아티스트"
+  ]
+ },
+ {
+  "code": "095660",
+  "ticker": "095660.KQ",
+  "name": "네오위즈",
+  "market": "KOSDAQ",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "mainProducts": [
+   "게임"
+  ]
+ },
+ {
+  "code": "069080",
+  "ticker": "069080.KQ",
+  "name": "웹젠",
+  "market": "KOSDAQ",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "mainProducts": [
+   "게임",
+   "MMORPG"
+  ]
+ },
+ {
+  "code": "462870",
+  "ticker": "462870.KS",
+  "name": "시프트업",
+  "market": "KOSPI",
+  "sector": "Communication Services",
+  "industry": "Electronic Gaming & Multimedia",
+  "mainProducts": [
+   "게임",
+   "니케"
+  ]
+ },
+ {
+  "code": "012510",
+  "ticker": "012510.KS",
+  "name": "더존비즈온",
+  "market": "KOSPI",
+  "sector": "Technology",
+  "industry": "Software—Application",
+  "mainProducts": [
+   "ERP",
+   "SW",
+   "클라우드"
+  ]
+ },
+ {
+  "code": "030520",
+  "ticker": "030520.KQ",
+  "name": "한글과컴퓨터",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Software—Application",
+  "mainProducts": [
+   "SW",
+   "오피스"
+  ]
+ },
+ {
+  "code": "084370",
+  "ticker": "084370.KQ",
+  "name": "유진테크",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "mainProducts": [
+   "반도체장비",
+   "증착"
+  ]
+ },
+ {
+  "code": "403870",
+  "ticker": "403870.KQ",
+  "name": "HPSP",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "mainProducts": [
+   "반도체장비",
+   "고압어닐링"
+  ]
+ },
+ {
+  "code": "064760",
+  "ticker": "064760.KQ",
+  "name": "티씨케이",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "mainProducts": [
+   "반도체부품",
+   "SiC"
+  ]
+ },
+ {
+  "code": "166090",
+  "ticker": "166090.KQ",
+  "name": "하나머티리얼즈",
+  "market": "KOSDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "mainProducts": [
+   "반도체소재",
+   "실리콘부품"
+  ]
+ }
+]
