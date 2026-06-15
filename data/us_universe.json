@@ -1,0 +1,785 @@
+[
+  {
+    "symbol": "AAPL",
+    "name": "Apple",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Consumer Electronics",
+    "mainProducts": [
+      "iPhone",
+      "Mac",
+      "서비스"
+    ]
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Microsoft",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Software—Infrastructure",
+    "mainProducts": [
+      "Azure",
+      "Windows",
+      "Office",
+      "클라우드"
+    ]
+  },
+  {
+    "symbol": "NVDA",
+    "name": "NVIDIA",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "mainProducts": [
+      "GPU",
+      "AI",
+      "데이터센터"
+    ]
+  },
+  {
+    "symbol": "AVGO",
+    "name": "Broadcom",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "mainProducts": [
+      "반도체",
+      "네트워킹",
+      "VMware"
+    ]
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Oracle",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Software—Infrastructure",
+    "mainProducts": [
+      "DB",
+      "클라우드"
+    ]
+  },
+  {
+    "symbol": "CRM",
+    "name": "Salesforce",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Software—Application",
+    "mainProducts": [
+      "CRM",
+      "SaaS"
+    ]
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Adobe",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Software—Application",
+    "mainProducts": [
+      "크리에이티브",
+      "SaaS"
+    ]
+  },
+  {
+    "symbol": "AMD",
+    "name": "AMD",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "mainProducts": [
+      "CPU",
+      "GPU"
+    ]
+  },
+  {
+    "symbol": "INTC",
+    "name": "Intel",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "mainProducts": [
+      "CPU",
+      "파운드리"
+    ]
+  },
+  {
+    "symbol": "QCOM",
+    "name": "Qualcomm",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "mainProducts": [
+      "모바일AP",
+      "5G"
+    ]
+  },
+  {
+    "symbol": "TXN",
+    "name": "Texas Instruments",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "mainProducts": [
+      "아날로그반도체"
+    ]
+  },
+  {
+    "symbol": "CSCO",
+    "name": "Cisco",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "mainProducts": [
+      "네트워크장비"
+    ]
+  },
+  {
+    "symbol": "IBM",
+    "name": "IBM",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Information Technology Services",
+    "mainProducts": [
+      "IT서비스",
+      "클라우드",
+      "AI"
+    ]
+  },
+  {
+    "symbol": "NOW",
+    "name": "ServiceNow",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Software—Application",
+    "mainProducts": [
+      "워크플로",
+      "SaaS"
+    ]
+  },
+  {
+    "symbol": "INTU",
+    "name": "Intuit",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Software—Application",
+    "mainProducts": [
+      "회계SW",
+      "터보택스"
+    ]
+  },
+  {
+    "symbol": "AMAT",
+    "name": "Applied Materials",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "mainProducts": [
+      "반도체장비"
+    ]
+  },
+  {
+    "symbol": "LRCX",
+    "name": "Lam Research",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "mainProducts": [
+      "반도체장비",
+      "식각"
+    ]
+  },
+  {
+    "symbol": "MU",
+    "name": "Micron",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "mainProducts": [
+      "메모리",
+      "DRAM",
+      "낸드"
+    ]
+  },
+  {
+    "symbol": "PLTR",
+    "name": "Palantir",
+    "market": "US",
+    "sector": "Technology",
+    "industry": "Software—Infrastructure",
+    "mainProducts": [
+      "빅데이터",
+      "AI",
+      "정부"
+    ]
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Alphabet",
+    "market": "US",
+    "sector": "Communication Services",
+    "industry": "Internet Content & Information",
+    "mainProducts": [
+      "검색",
+      "광고",
+      "유튜브",
+      "클라우드"
+    ]
+  },
+  {
+    "symbol": "META",
+    "name": "Meta Platforms",
+    "market": "US",
+    "sector": "Communication Services",
+    "industry": "Internet Content & Information",
+    "mainProducts": [
+      "SNS",
+      "광고",
+      "VR"
+    ]
+  },
+  {
+    "symbol": "NFLX",
+    "name": "Netflix",
+    "market": "US",
+    "sector": "Communication Services",
+    "industry": "Entertainment",
+    "mainProducts": [
+      "스트리밍",
+      "콘텐츠"
+    ]
+  },
+  {
+    "symbol": "DIS",
+    "name": "Walt Disney",
+    "market": "US",
+    "sector": "Communication Services",
+    "industry": "Entertainment",
+    "mainProducts": [
+      "미디어",
+      "테마파크",
+      "스트리밍"
+    ]
+  },
+  {
+    "symbol": "TMUS",
+    "name": "T-Mobile US",
+    "market": "US",
+    "sector": "Communication Services",
+    "industry": "Telecom Services",
+    "mainProducts": [
+      "통신",
+      "5G"
+    ]
+  },
+  {
+    "symbol": "VZ",
+    "name": "Verizon",
+    "market": "US",
+    "sector": "Communication Services",
+    "industry": "Telecom Services",
+    "mainProducts": [
+      "통신"
+    ]
+  },
+  {
+    "symbol": "T",
+    "name": "AT&T",
+    "market": "US",
+    "sector": "Communication Services",
+    "industry": "Telecom Services",
+    "mainProducts": [
+      "통신"
+    ]
+  },
+  {
+    "symbol": "AMZN",
+    "name": "Amazon",
+    "market": "US",
+    "sector": "Consumer Cyclical",
+    "industry": "Internet Retail",
+    "mainProducts": [
+      "이커머스",
+      "AWS",
+      "클라우드"
+    ]
+  },
+  {
+    "symbol": "TSLA",
+    "name": "Tesla",
+    "market": "US",
+    "sector": "Consumer Cyclical",
+    "industry": "Auto Manufacturers",
+    "mainProducts": [
+      "전기차",
+      "에너지",
+      "자율주행"
+    ]
+  },
+  {
+    "symbol": "HD",
+    "name": "Home Depot",
+    "market": "US",
+    "sector": "Consumer Cyclical",
+    "industry": "Home Improvement Retail",
+    "mainProducts": [
+      "홈인테리어",
+      "유통"
+    ]
+  },
+  {
+    "symbol": "MCD",
+    "name": "McDonald's",
+    "market": "US",
+    "sector": "Consumer Cyclical",
+    "industry": "Restaurants",
+    "mainProducts": [
+      "외식",
+      "프랜차이즈"
+    ]
+  },
+  {
+    "symbol": "NKE",
+    "name": "Nike",
+    "market": "US",
+    "sector": "Consumer Cyclical",
+    "industry": "Footwear & Accessories",
+    "mainProducts": [
+      "스포츠웨어",
+      "신발"
+    ]
+  },
+  {
+    "symbol": "SBUX",
+    "name": "Starbucks",
+    "market": "US",
+    "sector": "Consumer Cyclical",
+    "industry": "Restaurants",
+    "mainProducts": [
+      "커피",
+      "프랜차이즈"
+    ]
+  },
+  {
+    "symbol": "LOW",
+    "name": "Lowe's",
+    "market": "US",
+    "sector": "Consumer Cyclical",
+    "industry": "Home Improvement Retail",
+    "mainProducts": [
+      "홈인테리어",
+      "유통"
+    ]
+  },
+  {
+    "symbol": "BKNG",
+    "name": "Booking Holdings",
+    "market": "US",
+    "sector": "Consumer Cyclical",
+    "industry": "Travel Services",
+    "mainProducts": [
+      "여행예약",
+      "OTA"
+    ]
+  },
+  {
+    "symbol": "WMT",
+    "name": "Walmart",
+    "market": "US",
+    "sector": "Consumer Defensive",
+    "industry": "Discount Stores",
+    "mainProducts": [
+      "대형마트",
+      "유통"
+    ]
+  },
+  {
+    "symbol": "COST",
+    "name": "Costco",
+    "market": "US",
+    "sector": "Consumer Defensive",
+    "industry": "Discount Stores",
+    "mainProducts": [
+      "창고형마트",
+      "유통"
+    ]
+  },
+  {
+    "symbol": "PG",
+    "name": "Procter & Gamble",
+    "market": "US",
+    "sector": "Consumer Defensive",
+    "industry": "Household & Personal Products",
+    "mainProducts": [
+      "생활용품"
+    ]
+  },
+  {
+    "symbol": "KO",
+    "name": "Coca-Cola",
+    "market": "US",
+    "sector": "Consumer Defensive",
+    "industry": "Beverages—Non-Alcoholic",
+    "mainProducts": [
+      "음료"
+    ]
+  },
+  {
+    "symbol": "PEP",
+    "name": "PepsiCo",
+    "market": "US",
+    "sector": "Consumer Defensive",
+    "industry": "Beverages—Non-Alcoholic",
+    "mainProducts": [
+      "음료",
+      "스낵"
+    ]
+  },
+  {
+    "symbol": "PM",
+    "name": "Philip Morris",
+    "market": "US",
+    "sector": "Consumer Defensive",
+    "industry": "Tobacco",
+    "mainProducts": [
+      "담배"
+    ]
+  },
+  {
+    "symbol": "LLY",
+    "name": "Eli Lilly",
+    "market": "US",
+    "sector": "Healthcare",
+    "industry": "Drug Manufacturers—General",
+    "mainProducts": [
+      "제약",
+      "비만치료",
+      "당뇨"
+    ]
+  },
+  {
+    "symbol": "JNJ",
+    "name": "Johnson & Johnson",
+    "market": "US",
+    "sector": "Healthcare",
+    "industry": "Drug Manufacturers—General",
+    "mainProducts": [
+      "제약",
+      "의료기기"
+    ]
+  },
+  {
+    "symbol": "UNH",
+    "name": "UnitedHealth",
+    "market": "US",
+    "sector": "Healthcare",
+    "industry": "Healthcare Plans",
+    "mainProducts": [
+      "건강보험",
+      "의료서비스"
+    ]
+  },
+  {
+    "symbol": "MRK",
+    "name": "Merck",
+    "market": "US",
+    "sector": "Healthcare",
+    "industry": "Drug Manufacturers—General",
+    "mainProducts": [
+      "제약",
+      "키트루다"
+    ]
+  },
+  {
+    "symbol": "ABBV",
+    "name": "AbbVie",
+    "market": "US",
+    "sector": "Healthcare",
+    "industry": "Drug Manufacturers—General",
+    "mainProducts": [
+      "제약",
+      "면역"
+    ]
+  },
+  {
+    "symbol": "PFE",
+    "name": "Pfizer",
+    "market": "US",
+    "sector": "Healthcare",
+    "industry": "Drug Manufacturers—General",
+    "mainProducts": [
+      "제약",
+      "백신"
+    ]
+  },
+  {
+    "symbol": "TMO",
+    "name": "Thermo Fisher",
+    "market": "US",
+    "sector": "Healthcare",
+    "industry": "Diagnostics & Research",
+    "mainProducts": [
+      "진단",
+      "연구장비"
+    ]
+  },
+  {
+    "symbol": "ABT",
+    "name": "Abbott",
+    "market": "US",
+    "sector": "Healthcare",
+    "industry": "Medical Devices",
+    "mainProducts": [
+      "의료기기",
+      "진단"
+    ]
+  },
+  {
+    "symbol": "AMGN",
+    "name": "Amgen",
+    "market": "US",
+    "sector": "Healthcare",
+    "industry": "Drug Manufacturers—General",
+    "mainProducts": [
+      "바이오의약품"
+    ]
+  },
+  {
+    "symbol": "BRK-B",
+    "name": "Berkshire Hathaway",
+    "market": "US",
+    "sector": "Financial Services",
+    "industry": "Insurance—Diversified",
+    "mainProducts": [
+      "보험",
+      "지주",
+      "투자"
+    ]
+  },
+  {
+    "symbol": "JPM",
+    "name": "JPMorgan Chase",
+    "market": "US",
+    "sector": "Financial Services",
+    "industry": "Banks—Diversified",
+    "mainProducts": [
+      "은행",
+      "IB"
+    ]
+  },
+  {
+    "symbol": "V",
+    "name": "Visa",
+    "market": "US",
+    "sector": "Financial Services",
+    "industry": "Credit Services",
+    "mainProducts": [
+      "결제",
+      "카드네트워크"
+    ]
+  },
+  {
+    "symbol": "MA",
+    "name": "Mastercard",
+    "market": "US",
+    "sector": "Financial Services",
+    "industry": "Credit Services",
+    "mainProducts": [
+      "결제",
+      "카드네트워크"
+    ]
+  },
+  {
+    "symbol": "BAC",
+    "name": "Bank of America",
+    "market": "US",
+    "sector": "Financial Services",
+    "industry": "Banks—Diversified",
+    "mainProducts": [
+      "은행"
+    ]
+  },
+  {
+    "symbol": "WFC",
+    "name": "Wells Fargo",
+    "market": "US",
+    "sector": "Financial Services",
+    "industry": "Banks—Diversified",
+    "mainProducts": [
+      "은행"
+    ]
+  },
+  {
+    "symbol": "GS",
+    "name": "Goldman Sachs",
+    "market": "US",
+    "sector": "Financial Services",
+    "industry": "Capital Markets",
+    "mainProducts": [
+      "IB",
+      "증권"
+    ]
+  },
+  {
+    "symbol": "MS",
+    "name": "Morgan Stanley",
+    "market": "US",
+    "sector": "Financial Services",
+    "industry": "Capital Markets",
+    "mainProducts": [
+      "IB",
+      "자산관리"
+    ]
+  },
+  {
+    "symbol": "CAT",
+    "name": "Caterpillar",
+    "market": "US",
+    "sector": "Industrials",
+    "industry": "Farm & Heavy Construction Machinery",
+    "mainProducts": [
+      "건설기계",
+      "중장비"
+    ]
+  },
+  {
+    "symbol": "BA",
+    "name": "Boeing",
+    "market": "US",
+    "sector": "Industrials",
+    "industry": "Aerospace & Defense",
+    "mainProducts": [
+      "항공기",
+      "방산"
+    ]
+  },
+  {
+    "symbol": "HON",
+    "name": "Honeywell",
+    "market": "US",
+    "sector": "Industrials",
+    "industry": "Specialty Industrial Machinery",
+    "mainProducts": [
+      "산업자동화",
+      "항공"
+    ]
+  },
+  {
+    "symbol": "GE",
+    "name": "GE Aerospace",
+    "market": "US",
+    "sector": "Industrials",
+    "industry": "Aerospace & Defense",
+    "mainProducts": [
+      "항공엔진"
+    ]
+  },
+  {
+    "symbol": "UPS",
+    "name": "United Parcel Service",
+    "market": "US",
+    "sector": "Industrials",
+    "industry": "Integrated Freight & Logistics",
+    "mainProducts": [
+      "물류",
+      "택배"
+    ]
+  },
+  {
+    "symbol": "RTX",
+    "name": "RTX",
+    "market": "US",
+    "sector": "Industrials",
+    "industry": "Aerospace & Defense",
+    "mainProducts": [
+      "방산",
+      "항공"
+    ]
+  },
+  {
+    "symbol": "DE",
+    "name": "Deere",
+    "market": "US",
+    "sector": "Industrials",
+    "industry": "Farm & Heavy Construction Machinery",
+    "mainProducts": [
+      "농기계"
+    ]
+  },
+  {
+    "symbol": "LMT",
+    "name": "Lockheed Martin",
+    "market": "US",
+    "sector": "Industrials",
+    "industry": "Aerospace & Defense",
+    "mainProducts": [
+      "방산",
+      "전투기"
+    ]
+  },
+  {
+    "symbol": "XOM",
+    "name": "Exxon Mobil",
+    "market": "US",
+    "sector": "Energy",
+    "industry": "Oil & Gas Integrated",
+    "mainProducts": [
+      "석유",
+      "가스"
+    ]
+  },
+  {
+    "symbol": "CVX",
+    "name": "Chevron",
+    "market": "US",
+    "sector": "Energy",
+    "industry": "Oil & Gas Integrated",
+    "mainProducts": [
+      "석유",
+      "가스"
+    ]
+  },
+  {
+    "symbol": "COP",
+    "name": "ConocoPhillips",
+    "market": "US",
+    "sector": "Energy",
+    "industry": "Oil & Gas E&P",
+    "mainProducts": [
+      "석유개발",
+      "E&P"
+    ]
+  },
+  {
+    "symbol": "LIN",
+    "name": "Linde",
+    "market": "US",
+    "sector": "Basic Materials",
+    "industry": "Specialty Chemicals",
+    "mainProducts": [
+      "산업가스"
+    ]
+  },
+  {
+    "symbol": "SHW",
+    "name": "Sherwin-Williams",
+    "market": "US",
+    "sector": "Basic Materials",
+    "industry": "Specialty Chemicals",
+    "mainProducts": [
+      "페인트",
+      "코팅"
+    ]
+  },
+  {
+    "symbol": "FCX",
+    "name": "Freeport-McMoRan",
+    "market": "US",
+    "sector": "Basic Materials",
+    "industry": "Other Industrial Metals & Mining",
+    "mainProducts": [
+      "구리",
+      "광산"
+    ]
+  }
+]

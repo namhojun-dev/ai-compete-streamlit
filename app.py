@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import streamlit as st
 
-from lib import dart, screener, comparables, thirteenf
+from lib import dart, screener, comparables, thirteenf, us_screener
 from lib import universe as U
 
 st.set_page_config(page_title="AI Compete — 밸류에이션·13F", page_icon="📊", layout="wide")
@@ -48,6 +48,11 @@ def cached_13f(cik):
     return thirteenf.get_13f(cik, OPENFIGI_KEY)
 
 
+@st.cache_data(ttl=6 * 3600, show_spinner=False)
+def cached_us(sector):
+    return us_screener.screen_us(sector)
+
+
 # ---------- 포맷 헬퍼 ----------
 def f1(n):
     return "—" if n is None else f"{n:.1f}"
@@ -64,6 +69,8 @@ def pct(n):
 def usd(n):
     if n is None:
         return "—"
+    if n >= 1e12:
+        return f"${n/1e12:.2f}T"
     if n >= 1e9:
         return f"${n/1e9:.2f}B"
     if n >= 1e6:
@@ -71,14 +78,19 @@ def usd(n):
     return f"${round(n):,}"
 
 
-st.title("📊 AI Compete — 국내 밸류에이션 · 13F")
-st.caption("DART 실재무 기반 섹터/업종 저평가 스크리너 · 유사 종목 비교 · 미국 기관 13F 보유 (투자 자문 아님)")
+def usd2(n):
+    return "—" if n is None else f"${n:,.2f}"
+
+
+st.title("📊 AI Compete — 한국·미국 밸류에이션 · 13F")
+st.caption("한국(DART) · 미국(Yahoo) 저평가 스크리너 · 유사 종목 비교 · 미국 기관 13F 보유 (투자 자문 아님)")
 
 if not DART_KEY:
     st.warning("DART_API_KEY 가 설정되지 않아 PER·EPS·ROE 등 국내 재무가 비어 보일 수 있습니다. "
                "Streamlit Cloud → Settings → Secrets 에 `DART_API_KEY` 를 추가하세요.")
 
-tab1, tab2, tab3 = st.tabs(["🔎 섹터 저평가 스크리너", "🆚 유사 종목 비교", "🏦 13F 기관 보유"])
+tab1, tab2, tab4, tab3 = st.tabs(
+    ["🔎 한국 저평가 스크리너", "🆚 유사 종목 비교", "🇺🇸 미국 저평가 스크리너", "🏦 13F 기관 보유"])
 
 # ===== 탭 1: 스크리너 =====
 with tab1:
@@ -156,6 +168,42 @@ with tab2:
             st.caption("최종점수 = 유사도×0.40 + 저평가×0.45 + 퀄리티×0.15 · 숫자는 DART/Yahoo 실데이터")
         except Exception as e:
             st.error(str(e))
+
+# ===== 탭 4: 미국 스크리너 =====
+with tab4:
+    us_secs = us_screener.us_sectors()
+    us_map = {f"{U.sector_label(s)}  ({n})": s for s, n in us_secs}
+    uc = st.columns([3, 2])
+    us_sec_label = uc[0].selectbox("섹터 (미국)", list(us_map.keys()), key="us_sec")
+    us_sort = uc[1].radio("정렬", ["저평가점수", "PER↓", "ROE↑", "PBR↓"], horizontal=True, key="us_sort")
+    with st.spinner("Yahoo 재무 조회 + 저평가 점수 계산 중… (첫 조회 5~15초, 이후 캐시)"):
+        ures = cached_us(us_map[us_sec_label])
+    urows = ures["rows"]
+
+    def usval(c):
+        if us_sort == "PER↓":
+            return (c["per"] if (c["per"] and c["per"] > 0) else float("inf"),)
+        if us_sort == "ROE↑":
+            return (-(c["roe"] if c["roe"] is not None else -1e9),)
+        if us_sort == "PBR↓":
+            return (c["pbr"] if (c["pbr"] and c["pbr"] > 0) else float("inf"),)
+        return (-c["valuationScore"], -c["qualityScore"])
+
+    urows = sorted(urows, key=usval)
+    udf = pd.DataFrame([{
+        "순위": i + 1, "종목": c["name"], "티커": c["symbol"],
+        "업종": U.industry_label(c["industry"]), "현재가": usd2(c["price"]),
+        "PER": f1(c["per"]), "EPS": usd2(c["eps"]), "PBR": f1(c["pbr"]),
+        "ROE": pct(c["roe"]), "영업이익률": pct(c["operatingMargin"]),
+        "시총": usd(c["marketCap"]),
+        "저평가점수": ("계산불가" if c["financials"] == "missing" else c["valuationScore"]),
+        "의견": c["reason"],
+    } for i, c in enumerate(urows)])
+    st.markdown(f"**{U.sector_label(ures['sector'])} · {len(urows)}종목** — {us_sort}")
+    st.dataframe(udf, hide_index=True, use_container_width=True)
+    for w in ures.get("warnings", []):
+        st.caption("⚠ " + w)
+    st.caption("출처 Yahoo Finance · PER/EPS/PBR/ROE 실데이터 · 투자 자문 아님")
 
 # ===== 탭 3: 13F =====
 with tab3:
