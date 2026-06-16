@@ -89,6 +89,24 @@ def usd2(n):
     return "—" if n is None else f"${n:,.2f}"
 
 
+import re as _re
+
+
+def resolve_price(asset):
+    """예측 대상(미국 티커 / 한국 코드·종목명)의 현재가 — 자동 채점용."""
+    s = (asset or "").strip()
+    if not s:
+        return None
+    if _re.fullmatch(r"[A-Za-z][A-Za-z.\-]{0,5}", s):   # 미국 티커
+        f = us_screener.us_market.get_us_fundamentals(s.upper())
+        return f.get("price") if f else None
+    e = U.find_by_code(s) or U.find_by_name(s)           # 한국 코드/이름
+    if e:
+        px = U.market.get_price(e["ticker"])
+        return px.get("price") if px else None
+    return None
+
+
 st.title("📊 AI Compete — 한국·미국 밸류에이션 · 13F")
 st.caption("한국(DART) · 미국(Yahoo) 저평가 스크리너 · 유사 종목 비교 · 미국 기관 13F 보유 (투자 자문 아님)")
 
@@ -248,6 +266,19 @@ with tab5:
     st.markdown("개별 이벤트가 아니라 **분석 주체(나/모델)의 반복 예측을 누적**해 승률과 "
                 "캘리브레이션(확률이 실제로 맞는지)을 측정합니다. 베이지안 관점: 확률로 예측 → 결과로 갱신.")
     rows = predictions.load()
+
+    # 0) 만기 예측 자동 채점 (진입가 대비 현재가)
+    _due = predictions.due_count(rows)
+    if _due:
+        if st.button(f"⏰ 만기 예측 자동 채점 ({_due}건 대기)", type="primary"):
+            with st.spinner("현재가 조회 + 채점 중…"):
+                scored = predictions.auto_score(resolve_price)
+            if scored:
+                st.success(f"{len(scored)}건 자동 채점 완료")
+                st.dataframe(pd.DataFrame(scored), hide_index=True, use_container_width=True)
+            else:
+                st.info("채점된 항목이 없습니다(가격 조회 실패 등).")
+            rows = predictions.load()
 
     # 1) 예측 추가
     with st.expander("➕ 새 예측 기록", expanded=not rows):
@@ -475,14 +506,19 @@ with tab6:
                         st.caption("근거: " + " / ".join(op["key_reasons"]))
                     st.divider()
 
-        if st.button("🎯 예측 저널에 기록 (모델별 P상승)"):
+        qprice = (res.get("quote") or {}).get("price")
+        dh = st.columns([1, 3])
+        d_horizon = dh[0].number_input("예측기간(일)", 1, 365, 20, key="d_horizon",
+                                       help="이 기간이 지나면 진입가 대비 현재가로 자동 채점됩니다")
+        if dh[1].button("🎯 예측 저널에 기록 (모델별 P상승)"):
             for op in res["finals"]:
                 predictions.add(res["ticker"], debate.DISPLAY[op["modelId"]].split()[0],
                                 debate.position_to_prob(op), "AI 토론",
-                                logic=f"{op['position']} 신뢰도{op['confidence']}", horizon=20,
-                                note=(op["key_reasons"][:1] or [""])[0])
+                                logic=f"{op['position']} 신뢰도{op['confidence']}", horizon=int(d_horizon),
+                                entry=qprice, note=(op["key_reasons"][:1] or [""])[0])
             if syn:
                 predictions.add(res["ticker"], "AI종합", _pos_prob_consensus(syn["consensus"]),
-                                "AI 토론", logic=syn["consensus"], horizon=20, note=syn["summary"][:80])
+                                "AI 토론", logic=syn["consensus"], horizon=int(d_horizon),
+                                entry=qprice, note=syn["summary"][:80])
             st.success("모델별·종합 예측을 저널에 기록했습니다. '🎯 예측 트래킹' 탭에서 확인하세요.")
     st.caption("투자 자문이 아니며, 결과는 분석 참고용입니다.")

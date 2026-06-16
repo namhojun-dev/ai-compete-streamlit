@@ -98,6 +98,48 @@ def evidence_history(pred_id: int) -> list[dict]:
     return []
 
 
+def _due(r, today: date) -> bool:
+    try:
+        from datetime import timedelta
+        return date.fromisoformat(r["date"]) + timedelta(days=int(r.get("horizon", 0))) <= today
+    except Exception:
+        return False
+
+
+def due_count(rows, today=None) -> int:
+    """만기 도달 + 진입가 있는 미결 예측 수(자동 채점 대상)."""
+    today = today or date.today()
+    return sum(1 for r in rows if r.get("outcome") not in (0, 1) and r.get("entry") and _due(r, today))
+
+
+def auto_score(price_fn, today=None) -> list[dict]:
+    """만기 도달 미결 예측을 진입가 대비 현재가로 자동 채점. price_fn(asset)->float|None."""
+    today = today or date.today()
+    scored = []
+    rows = load()
+    changed = False
+    for r in rows:
+        if r.get("outcome") in (0, 1) or not r.get("entry") or not _due(r, today):
+            continue
+        try:
+            cur = price_fn(r["asset"])
+        except Exception:
+            cur = None
+        if cur is None:
+            continue
+        outcome = 1 if cur > r["entry"] else 0
+        ret = (cur - r["entry"]) / r["entry"] * 100
+        r["outcome"] = outcome
+        r["result_note"] = f"자동채점 {r['date']}→{today.isoformat()}: {r['entry']}→{round(cur, 2)} ({ret:+.1f}%)"
+        changed = True
+        scored.append({"id": r["id"], "asset": r["asset"], "subject": r["subject"],
+                       "entry": r["entry"], "now": round(cur, 2), "return": round(ret, 1),
+                       "결과": "상승" if outcome else "하락"})
+    if changed:
+        _save(rows)
+    return scored
+
+
 def replace_all(rows: list[dict]):
     """CSV 복원 등 전체 교체."""
     norm = []
