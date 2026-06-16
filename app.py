@@ -188,9 +188,15 @@ with tab2:
                 } for c in arr])
 
             st.markdown("#### 코스피 유사 종목 (최종점수순)")
-            st.dataframe(cmp_df(r["kospi"]), hide_index=True, use_container_width=True) if r["kospi"] else st.info("코스피 유사 종목 없음")
+            if r["kospi"]:
+                st.dataframe(cmp_df(r["kospi"]), hide_index=True, use_container_width=True)
+            else:
+                st.info("코스피 유사 종목 없음")
             st.markdown("#### 코스닥 유사 종목 (최종점수순)")
-            st.dataframe(cmp_df(r["kosdaq"]), hide_index=True, use_container_width=True) if r["kosdaq"] else st.info("코스닥 유사 종목 없음")
+            if r["kosdaq"]:
+                st.dataframe(cmp_df(r["kosdaq"]), hide_index=True, use_container_width=True)
+            else:
+                st.info("코스닥 유사 종목 없음")
             st.caption("최종점수 = 유사도×0.40 + 저평가×0.45 + 퀄리티×0.15 · 숫자는 DART/Yahoo 실데이터")
         except Exception as e:
             st.error(str(e))
@@ -353,7 +359,10 @@ with tab5:
     g_thr = gc[3].slider("행동 임계(엣지)", 0.0, 1.0, 0.20, step=0.05, key="g_thr")
     g = predictions.edge_gate(rows, g_subj.strip(), g_scen, g_prob, g_thr)
     act = g["decision"].startswith("행동")
-    (st.success if act else st.warning)(f"**판정: {g['decision']}** — {g['reason']}")
+    if act:
+        st.success(f"**판정: {g['decision']}** — {g['reason']}")
+    else:
+        st.warning(f"**판정: {g['decision']}** — {g['reason']}")
     gk = st.columns(5)
     gk[0].metric("방향", g["direction"])
     gk[1].metric("확신", f"{g['conviction']:.2f}", help="|P-50|/50")
